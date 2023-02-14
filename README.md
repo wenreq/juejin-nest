@@ -75,7 +75,7 @@ Nest is [MIT licensed](LICENSE).
 ## 项目文件介绍
 
 文件名|文件描述
----|---:
+---|---
 app.controller.ts|常见功能是用来处理http请求以及调用service层的处理方法
 app.module.ts|根模块用于处理其他类的引用与共享
 app.services.ts|封装通用的业务逻辑、与数据层的交互（例如数据库）、其他额外的一些三方请求
