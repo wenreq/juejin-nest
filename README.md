@@ -108,3 +108,22 @@ useGlobalInterceptors
 ### 全局异常拦截
 
 useGlobalFilters
+
+### 环境变量
+
+自带环境变量：
+
+1. 安装 `pnpm add @nestjs/config`
+2. 安装完毕之后，在 `app.module.ts` 中添加 `ConfigModule` 模块
+3. 自定义 YAML `pnpm add yaml`
+4. 使用自定义配置 `pnpm add cross-env`
+
+### 热重载
+
+1. 安装依赖：`pnpm add webpack-node-externals run-script-webpack-plugin webpack`
+2. 新建 `webpack-hmr.config.js` 文件
+
+### 文档
+
+1. 安装依赖：`pnpm add @nestjs/swagger` 新版本已经不需要安装 fastify-swagger 依赖，默认被内置在 @nestjs/swagger 中了。
+2. 依赖安装完毕之后，先创建 src/doc.ts 文件
