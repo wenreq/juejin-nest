@@ -10,10 +10,10 @@ import {
   Delete,
 } from '@nestjs/common';
 import { UserService } from './user.service';
-import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
 import { BusinessException } from 'src/common/exceptions/business.exception';
 import { ConfigService } from '@nestjs/config';
+import { AddUserDto } from './user.dto';
+import { ApiTags, ApiOperation } from '@nestjs/swagger';
 
 // @Controller('user')
 // 全局配置请求控制
@@ -22,6 +22,7 @@ import { ConfigService } from '@nestjs/config';
 //   version: '1',
 // })
 
+@ApiTags('用户')
 @Controller('user')
 export class UserController {
   constructor(
@@ -29,13 +30,21 @@ export class UserController {
     private readonly configService: ConfigService,
   ) {}
 
-  @Get('getTestName')
+  @ApiOperation({
+    summary: '新增用户',
+  })
+  @Post('/add')
+  create(@Body() user: AddUserDto) {
+    return this.userService.createOrSave(user);
+  }
+
+  @Get('/getTestName')
   getTestName() {
     console.log(this.configService.get('TEST_VALUE'));
     return this.configService.get('TEST_VALUE').name;
   }
 
-  // /user/findError 503
+  /* // /user/findError 503
   @Get('findError')
   // @Version([VERSION_NEUTRAL, '1'])
   findError() {
@@ -57,11 +66,6 @@ export class UserController {
     return this.userService.findAll();
   }
 
-  @Post()
-  create(@Body() createUserDto: CreateUserDto) {
-    return this.userService.create(createUserDto);
-  }
-
   @Get()
   // 启用版本配置之后再在 Controller 中请求方法添加对应的版本号装饰器
   // http://localhost:3000/v1/user
@@ -74,16 +78,6 @@ export class UserController {
   @Get(':id')
   // @Version('2') // /v2/user/1
   findOne(@Param('id') id: string) {
-    return this.userService.findOne(+id);
-  }
-
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
-    return this.userService.update(+id, updateUserDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.userService.remove(+id);
-  }
+    // return this.userService.findOne(+id);
+  } */
 }

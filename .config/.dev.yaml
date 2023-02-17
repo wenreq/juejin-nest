@@ -1,3 +1,16 @@
 # 注意 yaml 配置的规则，缩进以及冒号 : 后的空格是经常容易出错的地方
 TEST_VALUE:
   name: cookie
+MYSQL_CONFIG:
+  name: 'user-test' # 自定义次数据库链接名称
+  type: 'mysql' # 数据库类型
+  host: 'localhost' # 数据库的连接地址host
+  port: 3306 # 端口号 3306
+  username: 'root' # 数据库链接用户名
+  password: 'admin123' # 数据库链接密码
+  database: 'nest_db' # 数据库名
+  entities: 'mysql' # 这里的命名一定要跟 MongoDB 里面的配置命名区分开
+  logging: false # 数据库打印日志
+  synchronize: true # 是否开启同步数据表功能
+
+# MongoDB 是无模式的，所以即使在配置参数开启了 synchronize，启动项目的时候也不会去数据库创建对应的表，所以不用奇怪，并没有出错，但 Mysql 在每次应用程序启动时自动同步表结构，容易造成数据丢失，生产环境记得关闭，以免造成无可预计的损失。

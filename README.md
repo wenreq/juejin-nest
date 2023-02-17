@@ -127,3 +127,20 @@ useGlobalFilters
 
 1. 安装依赖：`pnpm add @nestjs/swagger` 新版本已经不需要安装 fastify-swagger 依赖，默认被内置在 @nestjs/swagger 中了。
 2. 依赖安装完毕之后，先创建 src/doc.ts 文件
+
+## 数据库
+
+### TypeORM
+
+对象关系映射（Object Relational Mapping，简称 ORM）模式是一种为了解决面向对象与关系数据库存在的互不匹配现象的技术。
+
+NestJS 使用 TypeORM 的方式有两种。
+
+1. 一种是 NestJS 提供的 `@nestjs/typeorm` 集成包，可以导出 `TypeOrmModule.forRoot` 方法来连接数据库，同时可以使用 `ormconfig.json` 将数据库链接配置项剥离。
+2. 另外一种是直接使用 `typeorm`，自由封装 `Providers` 导入使用。
+
+#### 使用
+
+1. 第一步：注册实体，创建 src/user/user.mongo.entity.ts
+2. 第二步：创建 user.providers.ts
+3. 第三步：创建 user.service.ts，新增添加用户 service
