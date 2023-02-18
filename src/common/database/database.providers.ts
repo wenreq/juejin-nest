@@ -5,7 +5,6 @@ import * as path from 'path';
 // 设置数据库类型
 const databaseType: DataSourceOptions['type'] = 'mysql';
 const { MYSQL_CONFIG } = getConfig();
-console.log(MYSQL_CONFIG, 'MYSQL_CONFIG---');
 
 const MYSQL_DATABASE_CONFIG = {
   ...MYSQL_CONFIG,

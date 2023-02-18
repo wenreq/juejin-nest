@@ -10,7 +10,6 @@ export class UserService {
   ) {}
 
   async createOrSave(user) {
-    console.log(user, this.userRepository.save);
     // return this.userRepository.save(user);
     const newUser = await this.userRepository.create(user);
     return await this.userRepository.save(newUser);
